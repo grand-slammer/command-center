@@ -1,15 +1,22 @@
-# Command Center v4
+# Command Center v4.1 — incremental upgrade from v4
 
-Static, local-first task and routine manager. Deploy the **contents** of this folder at the root of the existing GitHub Pages repository. Do not upload the ZIP itself.
+## Deploy without replacing your repository
 
-## Data preservation
-Before upgrading, export a JSON backup from each v3 profile. V4 reads the same `command-center-v2` default profile and `command-center-profile-<id>` keys as v3, and adds a `v4` property in each profile's data. It does not require a server or account. Test on your original browser before importing anything.
+1. **Export a JSON backup from every profile** in the current application.
+2. Create a Git branch named `release/v4.1` from `main` (optional but recommended).
+3. Update the existing files in your repository **in place**, preserving the same repository and URL. Commit as `feat: v4.1 smart add, recurring calendar, dashboard and focus`.
+4. Test on the branch or locally, then merge to `main` to deploy. GitHub Pages can remain configured for `main` and root.
+5. If anything goes wrong, use GitHub's commit history to revert the commit. Restoring a previous commit does not automatically restore browser data; keep backups.
 
-## Features
-Universal quick-add (`Ctrl/Cmd+J`), command palette (`Ctrl/Cmd+K`), natural-language task entry with today/tomorrow/next weekday and AM/PM times, trash/restore, per-profile theme/accent, dashboard widget visibility and ordering, task templates, weekday/after-completion recurrence, task dependencies, focus timer, individual-task calendar, profile-local productivity and custom goals, profile JSON export/import. Voice recognition remains browser-dependent.
+## What's changed
+- Smart Add opens a dedicated task-entry dialog from My Tasks or Ctrl/Cmd+K, with example commands and a preview.
+- Dashboard widgets now render in saved order rather than only moving within the settings list.
+- Upcoming recurring individual-task occurrences appear on the calendar, with a separate dashboard widget. Routine checklists remain excluded.
+- Focus Mode adds optional immersive **Slow Waves** animated gradients, reduced motion, and a voluntary confirmation before exit. Browser fullscreen is requested where supported, but is not guaranteed on iPhone.
+- Service-worker cache version updated so new files can replace v4 offline assets.
 
-## Important limits
-Natural-language parsing is rule-based, not AI. Reminder toasts work only while the app is open. The focus timer runs while the page remains active; closing or reloading loses an unfinished session. Data remains in browser localStorage, not synchronized. Individual-profile backups are separate; export every profile. Productivity history predating v4 may lack granular completion events, so historical analytics are partial.
+## Data and limitations
+This build keeps the same localStorage profile keys and data format as v4; no data reset or import is intended. Recurring calendar entries are projections from saved due dates and repeat rules; they do not create separate stored tasks until an occurrence is completed through the existing recurrence flow. Browser-based strict focus cannot block other apps or system controls. Voice recognition and fullscreen vary by browser.
 
-## Testing
-JavaScript syntax validation is included in the build process. Full real-device/browser testing has not been completed.
+## Verification
+JavaScript syntax and archive integrity were checked. Full browser interaction and iPhone testing are still required.
