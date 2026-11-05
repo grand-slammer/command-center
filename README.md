@@ -1,3 +1,9 @@
+## Command Center v4.2
+
+Patch release: recurring tasks can now be given a final occurrence date (Repeat until). Calendar projections and generated future tasks respect that end date. Immersive Focus has a compact task selector and opposing teal/violet wave animation over black.
+
+Existing local profile data is retained. Back up each profile before updating.
+
 # Command Center v4.1 — incremental upgrade from v4
 
 ## Deploy without replacing your repository
