@@ -1,28 +1,18 @@
-# Command Center — v1
+# Command Center v3 — Local profiles
 
-A free, local-first PWA for launching routines by button, typed command, or browser speech recognition (when supported).
+Adds a **Profile** selector and **+ Profile** button to v2. Each profile has its own tasks, routine templates, runs, calendar, history, and theme. Switching profiles reloads the view with that profile’s local data.
 
-## Quick start
+## Deploy
 
-1. Open `index.html` in a browser for a basic local preview. For offline installation and voice permission behavior, use HTTPS hosting or localhost instead.
-2. For a local server with Python installed, open a terminal in this folder and run `python -m http.server 8000`, then visit `http://localhost:8000`.
-3. For free hosting, create a public GitHub repository, upload these files at the repository root, then enable GitHub Pages under Settings → Pages → Deploy from a branch → main / root. Alternatively, upload the folder as a static site to Cloudflare Pages.
-4. On iPhone, open the HTTPS site in Safari and choose Share → Add to Home Screen. On desktop, use your browser's install-app option if offered.
+1. Export a backup from your current v2 site first.
+2. Unzip this package and upload **the files inside the folder** to the root of your existing GitHub repository. Replace the old files with matching names.
+3. Commit changes and refresh the GitHub Pages website.
 
-## Features
-- Four sample routines including Going to Work
-- Buttons, typed commands and browser speech recognition where supported
-- Editable routine names, command aliases, task templates and reset rules
-- Reset on launch, daily, weekly, or manual
-- Task priorities, completion tracking and recent activity history
-- Rule-based suggested checklists for unknown commands (not generative AI)
-- Local browser storage, JSON export and import
-- Offline cache after first successful load
+## Storage and safety
 
-## Important limitations
-- No automatic cross-device sync. Export on one device and import on another to transfer data.
-- Local browser data may be erased when site data is cleared or in private browsing. Export backups regularly.
-- Voice recognition support varies by browser, including iPhone; some browsers use a remote speech recognition service and need internet.
-- Recurrence is a reset of checklist completion, not an individual-task scheduler. There are no due dates, push reminders, accounts, or AI API integrations in v1.
-- Static hosting is free within provider limits; no paid services or API keys are required.
-- This is a starter app, not a security-hardened multi-user service.
+- The existing v2 data remains the **Personal** profile, stored under the original `command-center-v2` key.
+- New profiles get separate localStorage keys. They start with default example routines, but no task history.
+- Each profile has its own export/import via Settings; switching does not merge lists.
+- Profiles are **not password-protected** and are only available in the same browser on the same device. They do not sync across devices.
+- Do not clear browser site data without exporting backups from each profile.
+- Existing v2 features are retained, including a calendar showing only standalone tasks.
